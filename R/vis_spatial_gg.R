@@ -99,6 +99,7 @@
         axis_title = 8,
         theme_param = list(),
         show_plot = NULL,
+        custom_ext = NULL,  # New argument
         return_plot = NULL,
         save_plot = NULL,
         verbose = FALSE,
@@ -318,7 +319,7 @@
     ## plot point layer
     point_general_params <- list(
         ggobject = pl,
-        ext = ext(gobject, prefer = "spatlocs"),
+        ext = if (is.null(custom_ext)) ext(gobject, prefer = "spatlocs") else custom_ext,
         instrs = instructions(gobject),
         sdimx = sdimx,
         sdimy = sdimy,
@@ -556,6 +557,7 @@ spatPlot2D <- function(
         cow_rel_w = 1,
         cow_align = "h",
         show_plot = NULL,
+        custom_ext = NULL,  # New argument
         return_plot = NULL,
         save_plot = NULL,
         save_param = list(),
